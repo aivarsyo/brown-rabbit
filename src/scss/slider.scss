@@ -1,0 +1,180 @@
+@import "../../node_modules/flickity/dist/flickity.min.css";
+@import "./config.scss";
+
+.carouselSection {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto;
+
+  &__spacer {
+    display: none;
+  }
+}
+
+.carousel {
+  grid-column: 1/2;
+  grid-row: 1/2;
+  &__cell {
+    width: 100%;
+    height: 320px;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+.flickity-button {
+  background: transparent;
+  svg {
+    display: none;
+  }
+}
+
+.flickity-button:focus {
+  box-shadow: none;
+}
+
+.flickity-button:hover {
+  background: transparent;
+}
+
+.previous::before {
+  background-image: url("../assets/icons/arrow-left.svg");
+}
+
+.next::before {
+  background-image: url("../assets/icons/arrow-right.svg");
+}
+
+.previous::before,
+.next::before {
+  content: "";
+  display: block;
+  width: 30px;
+  height: 30px;
+  background-position: 50%;
+  background-size: cover;
+}
+
+.quoteContainer {
+  grid-column: 1/2;
+  grid-row: 1/3;
+  display: flex;
+  justify-content: center;
+  z-index: 1;
+  margin: 226px 1.5rem 0 1.5rem;
+
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: $black;
+    color: $white;
+    padding: 0 1.5rem;
+    min-height: 230px;
+  }
+}
+
+.quoteText {
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+.animateQuoteText {
+  transition: opacity 0.3s;
+  opacity: 0;
+}
+
+@media only screen and (min-width: 601px) {
+  .carousel {
+    &__cell {
+      height: 360px;
+    }
+  }
+  .quoteContainer {
+    margin: 226px 5rem 0 5rem;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .carouselSection {
+    &__spacer {
+      grid-column: 1/2;
+      grid-row: 1/2;
+      width: 100%;
+      height: 100px;
+      background-color: $black;
+      display: block;
+    }
+  }
+  .carousel {
+    padding: 0 40px;
+    grid-column: 1/2;
+    grid-row: 1/3;
+    &__cell {
+      width: 100%;
+      height: 450px;
+    }
+  }
+
+  .quoteContainer {
+    grid-row: 2/3;
+    justify-content: flex-start;
+    div {
+      max-width: 600px;
+      max-height: 210px;
+    }
+  }
+
+  .flickity-prev-next-button {
+    transform: translateY(-70px);
+  }
+
+  .flickity-prev-next-button.previous {
+    left: 66px;
+  }
+
+  .flickity-prev-next-button.next {
+    right: 66px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .carousel {
+    padding: 0 7vw;
+    &__cell {
+      height: 560px;
+    }
+  }
+
+  .quoteContainer {
+    margin: 346px 0 0 11vw;
+  }
+
+  .flickity-prev-next-button {
+    transform: initial;
+    left: initial !important;
+    bottom: 60px;
+    top: initial;
+    z-index: 2;
+  }
+
+  .flickity-prev-next-button.previous {
+    right: 11vw;
+  }
+
+  .flickity-prev-next-button.previous::before {
+    background-image: url("../assets/icons/arrow-left-black.svg");
+  }
+
+  .flickity-prev-next-button.next {
+    right: 7vw;
+  }
+
+  .flickity-prev-next-button.next::before {
+    background-image: url("../assets/icons/arrow-right-black.svg");
+  }
+}

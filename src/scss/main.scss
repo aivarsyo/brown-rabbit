@@ -1,0 +1,18 @@
+@import "./slider.scss";
+@import "./config.scss";
+@import "./articles.scss";
+@import "./staticContent.scss";
+@import "./header.scss";
+@import "./menu.scss";
+@import "./search.scss";
+@import "./footer.scss";
+
+body {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.noScroll {
+  overflow-y: hidden;
+}

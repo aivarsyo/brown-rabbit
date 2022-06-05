@@ -1,0 +1,213 @@
+@import "./config.scss";
+
+.articles {
+  display: flex;
+  flex-direction: column;
+  row-gap: 3rem;
+  &__one {
+    &__image {
+      height: 216px;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    h4 {
+      margin: 1rem 0;
+      font-weight: bold;
+    }
+
+    p {
+      margin: 1rem 0;
+      color: $darkGray;
+    }
+
+    h6 {
+      margin: 1rem 0;
+      line-height: 1.3;
+    }
+  }
+}
+
+.pagenumbers {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 0;
+  margin: 2rem 0;
+  border-bottom: 1px solid $lightGray;
+  border-top: 1px solid $lightGray;
+
+  &__text {
+    margin: 0;
+  }
+
+  button {
+    width: 100px;
+  }
+}
+
+//////////////////// MODAL /////////////////////
+
+.modal {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0s 0.4s;
+
+  &__content {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $white;
+    transition: transform 0.4s;
+    transform: translateY(100%);
+    overflow-y: scroll;
+
+    &__close {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background-color: $black;
+      width: 46px;
+      height: 46px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+
+      img {
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    &__image {
+      height: 260px;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &__text {
+      padding: 0 1.5rem 2rem 1.5rem;
+
+      h2 {
+        margin: 1rem 0;
+      }
+    }
+  }
+}
+
+.openModal {
+  transition: opacity 0s;
+  opacity: 1;
+}
+
+.setModalZindex {
+  z-index: 3;
+}
+
+.openModalContent {
+  transform: translateY(0);
+}
+
+//////////////// MEDIA QUERIES /////////////////////
+
+// 601
+
+@media only screen and (min-width: 601px) {
+  .modal {
+    background-color: rgba(112, 112, 112, 0.5);
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: center;
+    transition: opacity 0.4s;
+
+    &__content {
+      position: initial;
+      width: 80%;
+      height: 90%;
+      margin-top: 2rem;
+      opacity: 0;
+      transition: opacity 0.4s;
+      transition: transform 0s 0.4s;
+
+      &__text {
+        padding: 0 3rem;
+      }
+    }
+  }
+
+  .openModalContent {
+    transition: all 0.4s;
+    opacity: 1;
+  }
+}
+
+// 768
+
+@media only screen and (min-width: 768px) {
+  .articles {
+    flex-direction: row;
+    flex-wrap: wrap;
+    row-gap: 3rem;
+    column-gap: 3rem;
+    &__one {
+      width: calc((100% - 3rem) / 2);
+    }
+  }
+
+  .modal {
+    &__content {
+      width: 80%;
+      max-width: 760px;
+    }
+  }
+}
+
+// 1200
+
+@media only screen and (min-width: 1200px) {
+  .articles {
+    flex-direction: column;
+    &__one {
+      width: initial;
+      display: grid;
+      grid-template-columns: auto auto;
+      column-gap: 3rem;
+
+      h4 {
+        font-weight: lighter;
+        font-size: 30px;
+      }
+
+      &__image {
+        width: 20vw;
+        height: 20vw;
+        max-width: 300px;
+        max-height: 300px;
+      }
+    }
+  }
+
+  .modal {
+    &__content {
+      width: 53%;
+      display: block;
+      max-width: 767px;
+    }
+  }
+}

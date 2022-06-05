@@ -1,0 +1,103 @@
+@import "./config.scss";
+
+header {
+  height: $headerMobile;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.logo {
+  width: 230px;
+  height: auto;
+}
+
+.headerRight {
+  display: flex;
+  column-gap: 20px;
+
+  &__search {
+    width: 20px;
+    transition: transform 0.4s;
+    transform-origin: center;
+    transform: rotate(0);
+    cursor: pointer;
+  }
+
+  &__burgerMenu {
+    width: 30px;
+    cursor: pointer;
+
+    g {
+      line {
+        transition: transform 0.4s;
+        transform-origin: center;
+
+        &:first-child {
+          transform: rotate(0) translateY(0);
+        }
+        &:last-child {
+          transform: rotate(0) translateY(0);
+        }
+      }
+    }
+  }
+}
+
+.openBurgerMenu {
+  g {
+    line {
+      &:first-child {
+        transform: rotate(45deg) translateY(7px);
+      }
+      &:last-child {
+        transform: rotate(-45deg) translateY(-7px);
+      }
+    }
+  }
+}
+
+.openSearch {
+  transform: rotate(45deg);
+  z-index: 3;
+}
+
+@media only screen and (min-width: 601px) {
+  header {
+    height: $headerTablet;
+    padding: 0 40px;
+  }
+
+  .logo {
+    width: 320px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .headerRight {
+    &__search {
+      display: none;
+    }
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  header {
+    height: 170px;
+    padding: 0 50px;
+  }
+
+  .logo {
+    width: 360px;
+  }
+
+  .headerRight {
+    flex-direction: column;
+    row-gap: 1.5rem;
+    &__burgerMenu {
+      display: none;
+    }
+  }
+}

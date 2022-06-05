@@ -1,0 +1,145 @@
+@import "./config.scss";
+
+.menu {
+  opacity: 0;
+  z-index: -1;
+  position: fixed;
+  width: 100%;
+  height: calc(100% - $headerMobile);
+  right: 0;
+  bottom: 0;
+  transition: opacity 0.4s;
+  &__content {
+    width: 100%;
+    height: calc(100% - $headerMobile);
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    background-color: $black;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.4s;
+    transform: translateX(100%);
+    opacity: 0;
+
+    &__links {
+      margin: 1rem 0 0 20px;
+
+      ul {
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
+        display: flex;
+        flex-direction: column;
+        row-gap: 2rem;
+      }
+
+      a {
+        text-decoration: none;
+        color: $white;
+        font-size: 25px;
+        position: relative;
+      }
+
+      a::after {
+        content: "";
+        display: block;
+        width: 0;
+        height: 1px;
+        background: $white;
+        transition: width 0.3s;
+        position: absolute;
+      }
+
+      a:hover::after {
+        width: 100%;
+      }
+    }
+
+    &__icons {
+      align-self: center;
+      display: flex;
+      column-gap: 1.7rem;
+      padding-bottom: 3.5rem;
+
+      img {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.openMenu {
+  opacity: 1;
+}
+
+.setMenuZindex {
+  z-index: 2;
+}
+
+.openMenuContent {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+@media only screen and (min-width: 601px) {
+  .menu {
+    height: calc(100% - $headerTablet);
+    &__content {
+      height: calc(100% - $headerTablet);
+
+      &__links {
+        margin: 3rem 0 0 40px;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .menu {
+    background-color: rgba(112, 112, 112, 0.7);
+    &__content {
+      width: initial;
+      min-width: 300px;
+    }
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .menu {
+    opacity: initial;
+    z-index: initial;
+    position: initial;
+    width: initial;
+    height: initial;
+    transition: initial;
+    background-color: initial;
+    &__content {
+      width: initial;
+      height: initial;
+      position: initial;
+      background-color: initial;
+      display: initial;
+      flex-direction: row;
+      justify-content: initial;
+      transition: initial;
+      transform: initial;
+      opacity: initial;
+      min-width: initial;
+
+      &__links {
+        margin: 0;
+
+        ul {
+          flex-direction: row;
+          column-gap: 2rem;
+        }
+      }
+
+      &__icons {
+        display: none;
+      }
+    }
+  }
+}
